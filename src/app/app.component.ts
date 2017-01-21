@@ -7,6 +7,8 @@ import {
   ViewEncapsulation
 } from '@angular/core';
 
+import { Auth } from './_service/index'
+
 /*
  * App Component
  * Top Level Component
@@ -17,15 +19,12 @@ import {
   styleUrls: [
     './app.component.css'
   ],
-  template: `
-    <main>
-      <router-outlet></router-outlet>
-    </main>
-  `
+  templateUrl: './app.component.html'
 })
 export class AppComponent implements OnInit {
 
   constructor(
+    private auth: Auth
   ) {}
 
   public ngOnInit() {

@@ -31,7 +31,8 @@ import { NoContentComponent } from './no-content';
 // All services are here
 import { AUTH_PROVIDERS } from 'angular2-jwt';
 import { Auth } from './_service/index'
-import {LocationStrategy, PathLocationStrategy} from '@angular/common';
+import { LocationStrategy, PathLocationStrategy} from '@angular/common';
+import { ChartModule } from 'angular2-chartjs';
 
 import '../styles/styles.scss';
 import '../styles/headings.css';
@@ -63,14 +64,15 @@ type StoreType = {
     BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot(ROUTES, { useHash: true, preloadingStrategy: PreloadAllModules })
+    RouterModule.forRoot(ROUTES, { useHash: true, preloadingStrategy: PreloadAllModules }),
+    ChartModule
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,
     APP_PROVIDERS,
     AUTH_PROVIDERS,
     Auth,
-    { provide: LocationStrategy, useClass: PathLocationStrategy}
+    { provide: LocationStrategy, useClass: PathLocationStrategy }
   ]
 })
 export class AppModule {
