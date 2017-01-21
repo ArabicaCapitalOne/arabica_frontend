@@ -24,13 +24,13 @@ import { ROUTES } from './app.routes';
 import { AppComponent } from './app.component';
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState, InternalStateType } from './app.service';
-import { HomeComponent } from './home';
+import { HomeComponent, OverviewComponent, ProfileComponent } from './home';
 import { AboutComponent } from './about';
 import { NoContentComponent } from './no-content';
 
 // All services are here
 import { AUTH_PROVIDERS } from 'angular2-jwt';
-import { Auth } from './_service/index'
+import { Auth, LoggedInGuard } from './_service/index'
 import { LocationStrategy, PathLocationStrategy} from '@angular/common';
 import { ChartModule } from 'angular2-chartjs';
 
@@ -58,6 +58,8 @@ type StoreType = {
     AppComponent,
     AboutComponent,
     HomeComponent,
+    OverviewComponent,
+    ProfileComponent,
     NoContentComponent
   ],
   imports: [ // import Angular's modules
@@ -72,6 +74,7 @@ type StoreType = {
     APP_PROVIDERS,
     AUTH_PROVIDERS,
     Auth,
+    LoggedInGuard,
     { provide: LocationStrategy, useClass: PathLocationStrategy }
   ]
 })

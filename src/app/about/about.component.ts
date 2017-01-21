@@ -8,18 +8,7 @@ import { Auth } from '../_service/index';
 
 @Component({
   selector: 'about',
-  styles: [`
-  `],
-  template: `
-    <h1>About</h1>
-    <div>
-        This is the place to put the introduction page and login page.
-    </div>
-    <div class="navbar-header">
-    <button class="btn btn-primary btn-margin" (click)="auth.login()" *ngIf="!auth.authenticated()">Log In</button>
-    <button class="btn btn-primary btn-margin" (click)="auth.logout()" *ngIf="auth.authenticated()">Log Out</button>
-  </div>
-  `
+  templateUrl: './about.component.html'
 })
 export class AboutComponent implements OnInit {
 

@@ -1,0 +1,15 @@
+<section class="container">
+    <div class="row">
+        <chart [type]="type" [data]="data" [options]="options"></chart>
+    </div>
+    <br>
+    <div class="row">
+        <div class="offset-xs-1 offset-md-2 offset-xl-3"></div>
+        <div class="row text-center">
+            <button class="btn btn-info col" (click)="updateType('pie')">Pie</button>
+            <button class="btn btn-info col" (click)="updateType('bar')">Bar</button>
+            <button class="btn btn-info col" (click)="updateType('line')">Line</button>
+            <button class="btn btn-info col" (click)="updateType('polarArea')">Polar</button>
+        </div>
+    </div>
+</section>

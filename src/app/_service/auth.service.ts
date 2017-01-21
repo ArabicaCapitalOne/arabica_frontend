@@ -1,21 +1,29 @@
 import { Injectable }      from '@angular/core';
 import { tokenNotExpired } from 'angular2-jwt';
+import { Router } from '@angular/router';
 import Auth0Lock from "auth0-lock";
 
 @Injectable()
 export class Auth {
   // Configure Auth0
-  lock = new Auth0Lock('NFGRPL9EEVGJ03KBJj4gzeOBC7zQDp0C', 'guocheng.auth0.com', {
+  public lock = new Auth0Lock('NFGRPL9EEVGJ03KBJj4gzeOBC7zQDp0C', 'guocheng.auth0.com', {
     auth: {
-      redirect: false,
+      redirectUrl: 'http://localhost:3000/home',
       responseType: 'token',
       sso: false
+    },
+    theme: {
+      logo: '../../assets/img/arabica.png',
+      primaryColor: '#3A99D8'
+    },
+    languageDictionary: {
+      title: ''
     }
   });
 
-  constructor() {
+  constructor(private router: Router) {
     // Add callback for lock `authenticated` event
-    this.lock.on("authenticated", function (authResult) {
+    this.lock.on("authenticated", authResult => {
       console.log(authResult);
       localStorage.setItem('id_token', authResult.idToken);
     });
@@ -35,5 +43,6 @@ export class Auth {
   public logout() {
     // Remove token from localStorage
     localStorage.removeItem('id_token');
+    this.router.navigate(['/about']);
   }
 }
