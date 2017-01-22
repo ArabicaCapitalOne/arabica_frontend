@@ -9,18 +9,20 @@
 
 .container_info {
     position: absolute;
-    right: 120px;
+    right: 130px;
     overflow: auto;
     background: rgb(48, 48, 48);
     color: white;
     border: 1px solid #ccc;
     min-height: 57%;
     max-height: 65%;
-    max-width: 20%;
+    min-width: 330px;
+    max-width: 30%;
     font-size: 14px;
     font-family: inherit;
-    margin: 10px 10px 10px 10px;
+    margin: 5px 5px 5px 5px;
     box-shadow: -4px 4px 2px 0 rgba(0,0,0,0.3);
     white-space: pre-wrap;
     outline: 0;
+    opacity: 0.35;
 }

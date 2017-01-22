@@ -22,19 +22,81 @@ export class OverviewComponent implements OnInit {
     private income: any;
     private outcome: any;
     private options: any;
+
+    public kind: any = "Bill";
+    details: any;
+    // mock data
+    detailsBill: Array<any> = [
+        {
+            "_id": "58849b791756fc834d8fbd7c",
+            "status": "pending",
+            "payee": "string",
+            "nickname": "string",
+            "payment_date": "2017-01-22",
+            "recurring_date": 1,
+            "payment_amount": 0.01,
+            "creation_date": "2017-01-22",
+            "account_id": "588498a71756fc834d8fbd79"
+        },
+        {
+            "_id": "5884abb21756fc834d8fbd90",
+            "status": "completed",
+            "payee": "boilermake",
+            "nickname": "string",
+            "payment_date": "2017-01-22",
+            "recurring_date": 1,
+            "payment_amount": 100,
+            "creation_date": "2017-01-22",
+            "account_id": "588498891756fc834d8fbd78"
+        },
+        {
+            "_id": "5884ac121756fc834d8fbd91",
+            "status": "cancelled",
+            "payee": "boilermake",
+            "nickname": "string",
+            "payment_date": "2017-01-22",
+            "recurring_date": 1,
+            "payment_amount": 12345,
+            "creation_date": "2017-01-22",
+            "account_id": "588498891756fc834d8fbd78"
+        },
+        {
+            "_id": "5884ac371756fc834d8fbd92",
+            "status": "recurring",
+            "payee": "purduehackers",
+            "nickname": "string",
+            "payment_date": "2017-01-22",
+            "recurring_date": 1,
+            "payment_amount": 23.56,
+            "creation_date": "2017-01-22",
+            "account_id": "588498891756fc834d8fbd78"
+        },
+        {
+            "_id": "5884ac4d1756fc834d8fbd93",
+            "status": "completed",
+            "payee": "purduehackers",
+            "nickname": "string",
+            "payment_date": "2017-01-22",
+            "recurring_date": 1,
+            "payment_amount": 6.99,
+            "creation_date": "2017-01-22",
+            "account_id": "588498891756fc834d8fbd78"
+        }
+    ];
     constructor(private capitalData: Data) {
         this.type = 'pie';
         this.options = {
             responsive: true,
             maintainAspectRatio: false
         };
+        this.details = this.detailsBill;
 
         this.outcome = {
-            labels: ["Bill", "Loan", "Credit Card"],
+            labels: ["Bill", "Loan", "Credit Card", "Debit Card"],
             datasets: [
                 {
                     label: "This month record",
-                    data: [1200, 500, 1100]
+                    data: [1200, 500, 1100, 300]
                 }
             ]
         };
@@ -43,7 +105,7 @@ export class OverviewComponent implements OnInit {
             datasets: [
                 {
                     label: "This month record",
-                    data: [5500, 2800]
+                    data: [5500, 3100]
                 }
             ]
         };
@@ -55,6 +117,7 @@ export class OverviewComponent implements OnInit {
                 this.outcome.datasets[0].data[0] = data.Bill;
                 this.outcome.datasets[0].data[1] = data.Loan;
                 this.outcome.datasets[0].data[2] = data.CreditCard;
+                this.outcome.datasets[0].data[3] = data.DebitCard;
 
                 this.income.datasets[0].data[0] = data.Deposit;
                 this.income.datasets[0].data[1] = data.Bill + data.Loan + data.CreditCard;
@@ -72,6 +135,10 @@ export class OverviewComponent implements OnInit {
 
     private switchChart() {
         this.isIncome = !this.isIncome;
+    }
+
+    private changeKind(kind: any) {
+        this.kind = kind;
     }
 
     // events

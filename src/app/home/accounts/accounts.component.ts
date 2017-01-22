@@ -12,14 +12,29 @@ import { Data } from '../../_service'
 })
 export class AccountsComponent implements OnInit {
     accounts: Array<any>;
-    constructor(private backendData: Data) {
-        this.accounts = [{
+    mockAccounts: any = [
+        {
+            "_id": "588498891756fc834d8fbd78",
             "type": "Credit Card",
             "nickname": "string",
-            "rewards": 1200,
-            "balance": 3000,
-            "account_number": "1111111111111111"
-        }];
+            "rewards": 0,
+            "balance": 0,
+            "account_number": "0000000000000000",
+            "customer_id": "588498611756fc834d8fbd77"
+        },
+        {
+            "_id": "588498a71756fc834d8fbd79",
+            "type": "Credit Card",
+            "nickname": "string",
+            "rewards": 0,
+            "balance": 0,
+            "account_number": "1111111111111111",
+            "customer_id": "588498611756fc834d8fbd77"
+        }
+    ];
+    constructor(private backendData: Data) {
+        // mock data
+        this.accounts = this.mockAccounts;
     }
     ngOnInit() {
         this.backendData.getData("accounts").subscribe(
