@@ -28,18 +28,7 @@ export class OverviewComponent implements OnInit {
             responsive: true,
             maintainAspectRatio: false
         };
-    }
 
-    public ngOnInit() {
-        let tempData: any;
-        this.capitalData.getData("allInfom").subscribe(
-            data => {
-                tempData = data;
-            },
-            err => {
-                console.log(err);
-            }
-        )
         this.outcome = {
             labels: ["Bill", "Loan", "Credit Card"],
             datasets: [
@@ -58,6 +47,22 @@ export class OverviewComponent implements OnInit {
                 }
             ]
         };
+    }
+
+    public ngOnInit() {
+        this.capitalData.getData("allInfom").subscribe(
+            data => {
+                this.outcome.datasets[0].data[0] = data.Bill;
+                this.outcome.datasets[0].data[1] = data.Loan;
+                this.outcome.datasets[0].data[2] = data.CreditCard;
+
+                this.income.datasets[0].data[0] = data.Deposit;
+                this.income.datasets[0].data[1] = data.Bill + data.Loan + data.CreditCard;
+            },
+            err => {
+                console.log(err);
+            }
+        )
     }
 
     private updateType(t: string) {

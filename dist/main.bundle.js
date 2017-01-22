@@ -191,7 +191,7 @@ var Auth = (function () {
         // Add callback for lock `authenticated` event
         this.lock.on("authenticated", function (authResult) {
             console.log(authResult);
-            localStorage.setItem('id_token', authResult.idToken);
+            sessionStorage.setItem('id_token', authResult.idToken);
         });
     }
     Auth.prototype.login = function () {
@@ -200,12 +200,12 @@ var Auth = (function () {
     };
     Auth.prototype.authenticated = function () {
         // Check if there's an unexpired JWT
-        // This searches for an item in localStorage with key == 'id_token'
+        // This searches for an item in sessionStorage with key == 'id_token'
         return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_angular2_jwt__["tokenNotExpired"])();
     };
     Auth.prototype.logout = function () {
-        // Remove token from localStorage
-        localStorage.removeItem('id_token');
+        // Remove token from sessionStorage
+        sessionStorage.removeItem('id_token');
         this.router.navigate(['/about']);
     };
     return Auth;
@@ -235,7 +235,7 @@ var Data = (function () {
     function Data(http) {
         this.http = http;
         this.apiUrl = '/capitalOne/personal';
-        this.profile = JSON.parse(localStorage.getItem('profile'));
+        this.profile = JSON.parse(sessionStorage.getItem('profile'));
     }
     Data.prototype.getData = function (type) {
         var body = {
@@ -672,14 +672,14 @@ var HomeComponent = (function () {
     }
     HomeComponent.prototype.ngOnInit = function () {
         var _this = this;
-        var token = localStorage.getItem('id_token');
+        var token = sessionStorage.getItem('id_token');
         this.auth.lock.getProfile(token, function (err, profile) {
             if (err) {
                 // handle error
                 console.log(err);
                 return;
             }
-            localStorage.setItem('profile', JSON.stringify(profile));
+            sessionStorage.setItem('profile', JSON.stringify(profile));
             _this.profile = profile;
         });
     };
@@ -793,7 +793,7 @@ OverviewComponent = __decorate([
 
 var ProfileComponent = (function () {
     function ProfileComponent() {
-        this.profile = JSON.parse(localStorage.getItem('profile'));
+        this.profile = JSON.parse(sessionStorage.getItem('profile'));
     }
     ProfileComponent.prototype.ngOnInit = function () {
     };
