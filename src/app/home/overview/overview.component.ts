@@ -1,59 +1,84 @@
 import {
-  Component,
-  OnInit
+    Component,
+    OnInit
 } from '@angular/core';
+import { Data } from '../../_service'
 
 @Component({
-  // The selector is what angular internally uses
-  // for `document.querySelectorAll(selector)` in our index.html
-  // where, in this case, selector is the string 'home'
-  selector: 'overview',  // <home></home>
-  // Our list of styles in our component. We may add more to compose many styles together
-  styleUrls: ['./overview.component.css'],
-  // Every Angular template is first compiled by the browser before Angular runs it's compiler
-  templateUrl: './overview.component.html'
+    // The selector is what angular internally uses
+    // for `document.querySelectorAll(selector)` in our index.html
+    // where, in this case, selector is the string 'home'
+    selector: 'overview',  // <home></home>
+    // Our list of styles in our component. We may add more to compose many styles together
+    styleUrls: ['./overview.component.css'],
+    // Every Angular template is first compiled by the browser before Angular runs it's compiler
+    templateUrl: './overview.component.html'
 })
 export class OverviewComponent implements OnInit {
-  profile: any;
+    profile: any;
+    isIncome: boolean; // if it is income vs outcome, then it is true
 
-  private type: any;
-  private data: any;
-  private options: any;
-  constructor() {
-    this.type = 'pie';
-    this.data = {
-      labels: ["Bill", "Loan", "Credit Card", "Debit Card"],
-      datasets: [
-        {
-          label: "This month record",
-          data: [3000, 500, 4000, 5000]
-        }
-      ]
-    };
-    this.options = {
-      responsive: true,
-      maintainAspectRatio: false
-    };
-  }
+    private type: any;
+    private income: any;
+    private outcome: any;
+    private options: any;
+    constructor(private capitalData: Data) {
+        this.type = 'pie';
+        this.options = {
+            responsive: true,
+            maintainAspectRatio: false
+        };
+    }
 
-  public ngOnInit() {
-  }
+    public ngOnInit() {
+        let tempData: any;
+        this.capitalData.getData("allInfom").subscribe(
+            data => {
+                tempData = data;
+            },
+            err => {
+                console.log(err);
+            }
+        )
+        this.outcome = {
+            labels: ["Bill", "Loan", "Credit Card"],
+            datasets: [
+                {
+                    label: "This month record",
+                    data: [1200, 500, 1100]
+                }
+            ]
+        };
+        this.income = {
+            labels: ["Income", "Outcome"],
+            datasets: [
+                {
+                    label: "This month record",
+                    data: [5500, 2800]
+                }
+            ]
+        };
+    }
 
-  private updateType(t: string) {
-    console.log("checking:" + t);
-    this.type = t;
-  }
+    private updateType(t: string) {
+        console.log("checking:" + t);
+        this.type = t;
+    }
 
-  // events
-  public chartClicked(e: any): void {
-    console.log(e);
-  }
+    private switchChart() {
+        this.isIncome = !this.isIncome;
+    }
 
-  public chartHovered(e: any): void {
-    console.log(e);
-  }
+    // events
+    public chartClicked(e: any): void {
+        console.log(e);
+    }
 
-  private hasAccount(): boolean {
-    return true;
-  }
+    public chartHovered(e: any): void {
+        console.log(e);
+    }
+
+    private hasAccount(): boolean {
+        return true;
+    }
 }

@@ -1,22 +1,32 @@
 <section *ngIf="hasAccount()" class="container">
+    <h1 class="text-center">My Finance Record</h1>
+    <div class="container_info">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque blandit rhoncus neque, hendrerit pretium sapien ornare non.
+        Proin iaculis arcu risus, vel vulputate est pharetra a. Donec efficitur, velit in auctor congue, lectus ipsum lacinia
+        velit, in blandit est sem ut est. Aenean tortor lectus, viverra tempor purus sed, finibus varius arcu. Proin efficitur
+        scelerisque metus at commodo. Maecenas convallis fermentum laoreet. Proin finibus lectus vel enim consequat, vitae
+        vulputate libero elementum. Praesent sit amet dictum dui, ac maximus ante. Nunc nec arcu eget erat venenatis porta.
+        Phasellus suscipit accumsan tellus at semper.
+    </div>
     <div class="row">
-        <div class="offset-xl-3 offset-md-2 offset-xs-1 text-center">
-            <h1>My Finance Record</h1>
+        <div class="text-center">
             <div style="display: block;">
-                <canvas baseChart width="400" height="400" [datasets]="data.datasets" [labels]="data.labels" [options]="options" [chartType]="type"
-                    (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+                <canvas baseChart *ngIf="!isIncome" width="400" height="400" [datasets]="outcome.datasets" [labels]="outcome.labels" [options]="options"
+                    [chartType]="type" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+                <canvas baseChart *ngIf="isIncome" width="400" height="400" [datasets]="income.datasets" [labels]="income.labels" [options]="options"
+                    [chartType]="type" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
             </div>
         </div>
     </div>
     <br>
     <div class="row">
-        <div class="offset-xs-1 offset-md-2 offset-xl-3"></div>
         <div class="row text-center">
             <button class="btn btn-info col" (click)="updateType('pie')">Pie</button>
             <button class="btn btn-info col" (click)="updateType('bar')">Bar</button>
             <button class="btn btn-info col" (click)="updateType('line')">Line</button>
             <button class="btn btn-info col" (click)="updateType('radar')">Radar</button>
             <button class="btn btn-info col" (click)="updateType('polarArea')">Polar</button>
+            <button class="btn btn-default col" (click)="switchChart()">Switch</button>
         </div>
     </div>
 </section>
