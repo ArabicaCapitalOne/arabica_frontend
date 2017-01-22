@@ -16,20 +16,23 @@ import { Auth } from '../../_service/index'
     templateUrl: './profile.component.html'
 })
 export class ProfileComponent implements OnInit {
-    private profile: any;
+    private profile: any = {
+        name: "unknown",
+        gender: "unknown",
+        email: "unknown",
+        picture: "http://babyinfoforyou.com/wp-content/uploads/2014/10/avatar-300x300.png"
+    }
     constructor(private auth: Auth) {
+    }
+    public ngOnInit() {
         const token = localStorage.getItem('id_token');
-        console.log(token);
         this.auth.lock.getProfile(token, (err, profile) => {
             if (err) {
                 // handle error
                 console.log(err);
                 return;
             }
-
-            console.log(profile);
             this.profile = profile;
         });
     }
-    public ngOnInit() { }
 }

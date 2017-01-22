@@ -2,8 +2,6 @@ import {
   Component,
   OnInit
 } from '@angular/core';
-import { Auth } from '../../_service/index'
-
 
 @Component({
   // The selector is what angular internally uses
@@ -21,14 +19,14 @@ export class OverviewComponent implements OnInit {
   private type: any;
   private data: any;
   private options: any;
-  constructor(private auth: Auth) {
+  constructor() {
     this.type = 'pie';
     this.data = {
-      labels: ["January", "February", "March", "April", "May", "June", "July"],
+      labels: ["Bill", "Loan", "Credit Card", "Debit Card"],
       datasets: [
         {
-          label: "My First dataset",
-          data: [65, 59, 80, 81, 56, 55, 40]
+          label: "This month record",
+          data: [3000, 500, 4000, 5000]
         }
       ]
     };
@@ -41,6 +39,21 @@ export class OverviewComponent implements OnInit {
   public ngOnInit() {
   }
 
-  private updateData(t: string) {
+  private updateType(t: string) {
+    console.log("checking:" + t);
+    this.type = t;
+  }
+
+  // events
+  public chartClicked(e: any): void {
+    console.log(e);
+  }
+
+  public chartHovered(e: any): void {
+    console.log(e);
+  }
+
+  private hasAccount(): boolean {
+    return true;
   }
 }

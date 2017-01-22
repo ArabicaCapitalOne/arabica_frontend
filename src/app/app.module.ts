@@ -24,7 +24,7 @@ import { ROUTES } from './app.routes';
 import { AppComponent } from './app.component';
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState, InternalStateType } from './app.service';
-import { HomeComponent, OverviewComponent, ProfileComponent } from './home';
+import { HomeComponent, OverviewComponent, ProfileComponent, AccountsComponent } from './home';
 import { AboutComponent } from './about';
 import { NoContentComponent } from './no-content';
 
@@ -32,7 +32,7 @@ import { NoContentComponent } from './no-content';
 import { AUTH_PROVIDERS } from 'angular2-jwt';
 import { Auth, LoggedInGuard } from './_service/index'
 import { LocationStrategy, PathLocationStrategy} from '@angular/common';
-import { ChartModule } from 'angular2-chartjs';
+import { ChartsModule } from 'ng2-charts';
 
 import '../styles/styles.scss';
 import '../styles/headings.css';
@@ -60,6 +60,7 @@ type StoreType = {
     HomeComponent,
     OverviewComponent,
     ProfileComponent,
+    AccountsComponent,
     NoContentComponent
   ],
   imports: [ // import Angular's modules
@@ -67,7 +68,7 @@ type StoreType = {
     FormsModule,
     HttpModule,
     RouterModule.forRoot(ROUTES, { useHash: true, preloadingStrategy: PreloadAllModules }),
-    ChartModule
+    ChartsModule
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,
