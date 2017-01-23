@@ -16,19 +16,19 @@ export class AccountsComponent implements OnInit {
         {
             "_id": "588498891756fc834d8fbd78",
             "type": "Credit Card",
-            "nickname": "string",
-            "rewards": 0,
-            "balance": 0,
-            "account_number": "0000000000000000",
+            "nickname": "Daily Used Card",
+            "rewards": 1000,
+            "balance": 786,
+            "account_number": "21010519961118401139",
             "customer_id": "588498611756fc834d8fbd77"
         },
         {
             "_id": "588498a71756fc834d8fbd79",
             "type": "Credit Card",
-            "nickname": "string",
-            "rewards": 0,
-            "balance": 0,
-            "account_number": "1111111111111111",
+            "nickname": "Card to Pay Bills",
+            "rewards": 5000,
+            "balance": 3952,
+            "account_number": "6466960027949935",
             "customer_id": "588498611756fc834d8fbd77"
         }
     ];

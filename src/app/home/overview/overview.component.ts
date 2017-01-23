@@ -95,8 +95,16 @@ export class OverviewComponent implements OnInit {
             labels: ["Bill", "Loan", "Credit Card", "Debit Card"],
             datasets: [
                 {
-                    label: "This month record",
+                    label: "Jan 2017",
                     data: [1200, 500, 1100, 300]
+                },
+                {
+                    label: "Dec 2016",
+                    data: [1100, 500, 783, 0]
+                },
+                {
+                    label: "Nov 2016",
+                    data: [1200, 700, 983, 500]
                 }
             ]
         };
@@ -104,8 +112,16 @@ export class OverviewComponent implements OnInit {
             labels: ["Income", "Outcome"],
             datasets: [
                 {
-                    label: "This month record",
+                    label: "Jan 2017",
                     data: [5500, 3100]
+                },
+                {
+                    label: "Dec 2016",
+                    data: [5500, 2383]
+                },
+                {
+                    label: "Nov 2016",
+                    data: [4500, 3383]
                 }
             ]
         };
