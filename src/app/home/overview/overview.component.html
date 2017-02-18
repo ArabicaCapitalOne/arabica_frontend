@@ -1,6 +1,29 @@
 <section *ngIf="hasAccount()" class="container">
     <h1 class="text-center">My Finance Record</h1><br>
-    <div class="container_info">
+    <ul class="nav nav-tabs">
+        <li role="presentation" [class.active]="contentType == 'Chart'"><a (click)="switchContent('Chart')">Chart</a></li>
+        <li role="presentation" [class.active]="contentType == 'List'"><a (click)="switchContent('List')">List</a></li>
+    </ul>
+    <div class="row" *ngIf="contentType == 'Chart'">
+        <div class="text-center">
+            <div style="display: block;">
+                <canvas baseChart *ngIf="!isIncome" width="400" height="400" [datasets]="outcome.datasets" [labels]="outcome.labels" [options]="options" [chartType]="type" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+                <canvas baseChart *ngIf="isIncome" width="400" height="400" [datasets]="income.datasets" [labels]="income.labels" [options]="options"[chartType]="type" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="row text-center">
+                <button class="btn btn-info col" (click)="updateType('pie')">Pie</button>
+                <button class="btn btn-info col" (click)="updateType('bar')">Bar</button>
+                <button class="btn btn-info col" (click)="updateType('line')">Line</button>
+                <button class="btn btn-info col" (click)="updateType('radar')">Radar</button>
+                <button class="btn btn-info col" (click)="updateType('polarArea')">Polar</button>
+                <button class="btn btn-default col" (click)="switchChart()">Switch</button>
+            </div>
+        </div>
+    </div>
+    <div class="row" *ngIf="contentType == 'List'"> 
         <h3 class="text-center">{{kind}} Details</h3>
         <div *ngIf="kind === 'Bill'">
             <div *ngFor="let bill of details; let i = index">
@@ -18,27 +41,6 @@
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="text-center">
-            <div style="display: block;">
-<canvas baseChart *ngIf="!isIncome" width="400" height="400" [datasets]="outcome.datasets" [labels]="outcome.labels" [options]="options"
-    [chartType]="type" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
-<canvas baseChart *ngIf="isIncome" width="400" height="400" [datasets]="income.datasets" [labels]="income.labels" [options]="options"
-    [chartType]="type" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
-</div>
-</div>
-</div>
-<br>
-<div class="row">
-    <div class="row text-center">
-        <button class="btn btn-info col" (click)="updateType('pie')">Pie</button>
-        <button class="btn btn-info col" (click)="updateType('bar')">Bar</button>
-        <button class="btn btn-info col" (click)="updateType('line')">Line</button>
-        <button class="btn btn-info col" (click)="updateType('radar')">Radar</button>
-        <button class="btn btn-info col" (click)="updateType('polarArea')">Polar</button>
-        <button class="btn btn-default col" (click)="switchChart()">Switch</button>
-    </div>
-</div>
 </section>
 
 <!-- If donot have an Capital One account-->

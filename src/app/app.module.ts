@@ -30,7 +30,7 @@ import { NoContentComponent } from './no-content';
 
 // All services are here
 import { AUTH_PROVIDERS } from 'angular2-jwt';
-import { Auth, LoggedInGuard, Data } from './_service/index'
+import { Auth, LoggedInGuard, Data, CapitalOne } from './_service/index'
 import { LocationStrategy, PathLocationStrategy} from '@angular/common';
 import { ChartsModule } from 'ng2-charts';
 
@@ -74,9 +74,7 @@ type StoreType = {
     ENV_PROVIDERS,
     APP_PROVIDERS,
     AUTH_PROVIDERS,
-    Auth,
-    LoggedInGuard,
-    Data,
+    Auth, LoggedInGuard, Data, CapitalOne,
     { provide: LocationStrategy, useClass: PathLocationStrategy }
   ]
 })
