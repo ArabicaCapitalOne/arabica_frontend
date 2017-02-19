@@ -1,5 +1,5 @@
 import { Routes, RouterModule } from '@angular/router';
-import { HomeComponent, ProfileComponent, OverviewComponent, AccountsComponent } from './home';
+import { HomeComponent, ProfileComponent, OverviewComponent, AccountsComponent, CategorizationComponent } from './home';
 import { AboutComponent } from './about';
 import { NoContentComponent } from './no-content';
 
@@ -15,7 +15,8 @@ export const ROUTES: Routes = [
       { path: '', redirectTo: 'overview', pathMatch: 'full' },
       { path: 'overview', component: OverviewComponent },
       { path: 'profile', component: ProfileComponent },
-      { path: 'accounts', component: AccountsComponent }
+      { path: 'accounts', component: AccountsComponent },
+      { path: 'categorization', component: CategorizationComponent }
     ]
   },
   { path: 'about', component: AboutComponent },

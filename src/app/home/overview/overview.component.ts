@@ -1,11 +1,12 @@
 import {
     Component,
-    OnInit
+    OnInit,
+    HostListener
 } from '@angular/core';
 import { CapitalOne } from '../../_service'
 
 @Component({
-    selector: 'overview', 
+    selector: 'overview',
     styleUrls: ['./overview.component.css'],
     templateUrl: './overview.component.html'
 })
@@ -14,34 +15,40 @@ export class OverviewComponent implements OnInit {
     isIncome: boolean; // if it is income vs outcome, then it is true
 
     private contentType = "Chart";
-    private billTotal: Number;
-    private loanTotal: Number;
-    private purchaseTotal: Number;
+    private billTotal: Number = 0;
+    private loanTotal: Number = 0;
+    private purchaseTotal: Number = 0;
 
     private type: any;
-    private income: any;
-    private outcome: any;
+    private outcome: {
+        labels: Array<string>,
+        datasets: Array<{
+            label: string,
+            data: Array<Number>
+        }>
+    };
+    private income: {
+        labels: Array<string>,
+        datasets: Array<{
+            label: string,
+            data: Array<Number>
+        }>
+    };
     private options: any;
 
-    private accounts: any;
-
     public kind: any = "Bill";
-    details: any;
+    public bills: Array<any>;
+    public loans: Array<any>;
+    public purchases: Array<any>;
+
     // mock data
-  
+
     constructor(private capitalOne: CapitalOne) {
         this.type = 'pie';
         this.options = {
             responsive: true,
             maintainAspectRatio: false
         };
-
-        this.capitalOne.getAccounts().subscribe(
-            data => {
-                this.accounts = data;
-            }
-        );
-
         this.outcome = {
             labels: ["Bill", "Loan", "Purchase"],
             datasets: [
@@ -57,14 +64,6 @@ export class OverviewComponent implements OnInit {
                 {
                     label: "Jan 2017",
                     data: [5500, 3100]
-                },
-                {
-                    label: "Dec 2016",
-                    data: [5500, 2383]
-                },
-                {
-                    label: "Nov 2016",
-                    data: [4500, 3383]
                 }
             ]
         };
@@ -73,35 +72,68 @@ export class OverviewComponent implements OnInit {
     ngOnInit() {
         this.capitalOne.getBills().subscribe(
             data => {
+                this.bills = data;
                 for (let bill of data) {
                     this.billTotal += bill.payment_amount;
                 }
+
+                this.capitalOne.getAccounts().subscribe(
+                    data => {
+                        for (let account of data) {
+                            this.capitalOne.getLoans(account._id).subscribe(
+                                data => {
+                                    this.loans = data;
+                                    for (let loan of data) {
+                                        this.loanTotal += loan.monthly_payment;
+                                    }
+                                    this.capitalOne.getPurchases(account._id).subscribe(
+                                        data => {
+                                            this.purchases = data;
+                                            for (let purchase of data) {
+                                                this.purchaseTotal += purchase.amount;
+                                            }
+                                            this.outcome = {
+                                                labels: ["Bill", "Loan", "Purchase"],
+                                                datasets: [
+                                                    {
+                                                        label: "Jan 2017",
+                                                        data: [this.billTotal, this.loanTotal, this.purchaseTotal]
+                                                    }
+                                                ]
+                                            };
+                                            this.income = {
+                                                labels: ["Income", "Outcome"],
+                                                datasets: [
+                                                    {
+                                                        label: "Jan 2017",
+                                                        data: [5500, 3100]
+                                                    },
+                                                    {
+                                                        label: "Dec 2016",
+                                                        data: [5500, 2383]
+                                                    },
+                                                    {
+                                                        label: "Nov 2016",
+                                                        data: [4500, 3383]
+                                                    }
+                                                ]
+                                            };
+                                        }
+                                    )
+                                },
+                                err => {
+                                    console.log(err);
+                                }
+                            );
+                        }
+                    }
+                );
             },
             err => {
                 console.log(err);
             }
         );
 
-        for (let account of this.accounts) {
-            this.capitalOne.getLoans(account._id).subscribe(
-                data => {
-                    for (let bill of data) {
-                        this.billTotal += bill.payment_amount;
-                    }
-                },
-                err => {
-                    console.log(err);
-                }
-            );
-
-            this.capitalOne.getPurchases(account._id).subscribe(
-                data => {
-                    for (let purchase of data) {
-                        this.purchaseTotal += purchase.amount;
-                    }
-                }
-            )
-        }
     }
 
     private updateType(t: string) {
@@ -111,10 +143,6 @@ export class OverviewComponent implements OnInit {
 
     private switchChart() {
         this.isIncome = !this.isIncome;
-    }
-
-    private changeKind(kind: any) {
-        this.kind = kind;
     }
 
     // events
@@ -132,5 +160,19 @@ export class OverviewComponent implements OnInit {
 
     public switchContent(type: string): void {
         this.contentType = type;
+    }
+
+    @HostListener('document:keyup', ['$event'])
+    doSomething(event: any) {
+        let financeType = ["Bill", "Loan", "Purchase"];
+        let index = financeType.indexOf(this.kind);
+        if (event.keyIdentifier === 'Left') {
+            index--;
+            if (index < 0) { index = financeType.length - 1; }
+        } else if (event.keyIdentifier === 'Right') {
+            index++;
+            if (index > financeType.length - 1) { index = 0; }
+        }
+        this.kind = financeType[index];
     }
 }

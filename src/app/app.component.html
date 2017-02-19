@@ -21,6 +21,7 @@
             <ul *ngIf="auth.authenticated()" class="nav navbar-nav navbar-right">
                 <li><a [routerLink]="['./home/overview']">Overview</a></li>
                 <li><a [routerLink]="['./home/accounts']">Accounts</a></li>
+                <li><a [routerLink]="['./home/categorization']">Categorization</a></li>
                 <li><a [routerLink]="['./home/profile']">Profile</a></li>
                 <li><button class="btn btn-primary" (click)="auth.logout()" style="margin: 9px 0px 0px 0px">Log Out</button></li>
             </ul>
