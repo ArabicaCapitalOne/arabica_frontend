@@ -18,6 +18,7 @@ export class OverviewComponent implements OnInit {
     private billTotal: Number = 0;
     private loanTotal: Number = 0;
     private purchaseTotal: Number = 0;
+    private transfersTotal: Number = 0;
 
     private type: any;
     private outcome: {
@@ -37,9 +38,11 @@ export class OverviewComponent implements OnInit {
     private options: any;
 
     public kind: any = "Bill";
-    public bills: Array<any>;
-    public loans: Array<any>;
-    public purchases: Array<any>;
+    public bills: Array<any> = [];
+    public loans: Array<any> = [];
+    public purchases: Array<any> = [];
+    public transfers: Array<any> = [];
+
 
     // mock data
 
@@ -50,11 +53,11 @@ export class OverviewComponent implements OnInit {
             maintainAspectRatio: false
         };
         this.outcome = {
-            labels: ["Bill", "Loan", "Purchase"],
+            labels: ["Bill", "Loan", "Purchase", "Transfer"],
             datasets: [
                 {
                     label: "Jan 2017",
-                    data: [this.billTotal, this.loanTotal, this.purchaseTotal]
+                    data: [0, 0, 0, 0]
                 }
             ]
         };
@@ -72,57 +75,64 @@ export class OverviewComponent implements OnInit {
     ngOnInit() {
         this.capitalOne.getBills().subscribe(
             data => {
-                this.bills = data;
                 for (let bill of data) {
+                    this.bills.push(bill);
                     this.billTotal += bill.payment_amount;
                 }
-
                 this.capitalOne.getAccounts().subscribe(
                     data => {
                         for (let account of data) {
-                            this.capitalOne.getLoans(account._id).subscribe(
+                            this.capitalOne.getTransfer(account._id).subscribe(
                                 data => {
-                                    this.loans = data;
-                                    for (let loan of data) {
-                                        this.loanTotal += loan.monthly_payment;
+                                    for (let transfer of data) {
+                                        this.transfers.push(transfer)
+                                        this.transfersTotal += transfer.amount;
                                     }
-                                    this.capitalOne.getPurchases(account._id).subscribe(
+                                    this.capitalOne.getLoans(account._id).subscribe(
                                         data => {
-                                            this.purchases = data;
-                                            for (let purchase of data) {
-                                                this.purchaseTotal += purchase.amount;
+                                            for (let loan of data) {
+                                                this.loans.push(loan);
+                                                this.loanTotal += loan.monthly_payment;
                                             }
-                                            this.outcome = {
-                                                labels: ["Bill", "Loan", "Purchase"],
-                                                datasets: [
-                                                    {
-                                                        label: "Jan 2017",
-                                                        data: [this.billTotal, this.loanTotal, this.purchaseTotal]
+                                            this.capitalOne.getPurchases(account._id).subscribe(
+                                                data => {
+                                                    for (let purchase of data) {
+                                                        this.purchases.push(purchase);
+                                                        this.purchaseTotal += purchase.amount;
                                                     }
-                                                ]
-                                            };
-                                            this.income = {
-                                                labels: ["Income", "Outcome"],
-                                                datasets: [
-                                                    {
-                                                        label: "Jan 2017",
-                                                        data: [5500, 3100]
-                                                    },
-                                                    {
-                                                        label: "Dec 2016",
-                                                        data: [5500, 2383]
-                                                    },
-                                                    {
-                                                        label: "Nov 2016",
-                                                        data: [4500, 3383]
-                                                    }
-                                                ]
-                                            };
+                                                    this.outcome = {
+                                                        labels: ["Bill", "Loan", "Purchase", "Transfer"],
+                                                        datasets: [
+                                                            {
+                                                                label: "Jan 2017",
+                                                                data: [this.billTotal, this.loanTotal, this.purchaseTotal, this.transfersTotal]
+                                                            }
+                                                        ]
+                                                    };
+                                                    this.income = {
+                                                        labels: ["Income", "Outcome"],
+                                                        datasets: [
+                                                            {
+                                                                label: "Jan 2017",
+                                                                data: [5500, 3100]
+                                                            },
+                                                            {
+                                                                label: "Dec 2016",
+                                                                data: [5500, 2383]
+                                                            },
+                                                            {
+                                                                label: "Nov 2016",
+                                                                data: [4500, 3383]
+                                                            }
+                                                        ]
+                                                    };
+                                                }
+                                            )
+                                        },
+                                        err => {
+                                            console.log(err);
                                         }
-                                    )
-                                },
-                                err => {
-                                    console.log(err);
+                                    );
                                 }
                             );
                         }
@@ -164,7 +174,7 @@ export class OverviewComponent implements OnInit {
 
     @HostListener('document:keyup', ['$event'])
     doSomething(event: any) {
-        let financeType = ["Bill", "Loan", "Purchase"];
+        let financeType = ["Bill", "Loan", "Transfer"];
         let index = financeType.indexOf(this.kind);
         if (event.keyIdentifier === 'Left') {
             index--;
@@ -174,5 +184,12 @@ export class OverviewComponent implements OnInit {
             if (index > financeType.length - 1) { index = 0; }
         }
         this.kind = financeType[index];
+    }
+
+    ngOnDestroy() {
+        this.bills = [];
+        this.loans = [];
+        this.purchases = [];
+        this.transfers = [];
     }
 }

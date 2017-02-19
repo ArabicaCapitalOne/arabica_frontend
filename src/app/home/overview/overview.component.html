@@ -62,6 +62,24 @@
                     <td>{{loan.amount}}</td>
                 </tr>
             </table>
+
+            <!-- Purchase -->
+            <table class="table" *ngIf="kind === 'Transfer'">
+                <tr>
+                    <th>Type</th>
+                    <th>Status</th>
+                    <th>Amount</th>
+                    <th>Transaction Date</th>
+                    <th>Payee</th>
+                </tr>
+                <tr *ngFor="let transfer of transfers">
+                    <td>{{transfer.type}}</td>
+                    <td>{{transfer.status}}</td>
+                    <td>{{transfer.amount}}</td>
+                    <td>{{transfer.transaction_date}}</td>
+                    <td>{{transfer.payee_id}}</td>
+                </tr>
+            </table>
         </div>
     </div>
 </section>

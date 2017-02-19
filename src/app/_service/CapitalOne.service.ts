@@ -31,6 +31,11 @@ export class CapitalOne {
         return this.http.get(getPurchasesUrl).map((res: Response) => res.json());
     }
 
+    public getTransfer(accountID: string) {
+        let getTransferUrl = `${this.apiUrl}/accounts/${accountID}/transfers?key=${this.APIKey}`;
+        return this.http.get(getTransferUrl).map((res: Response) => res.json());
+    }
+
     public getMerchants(merchantID: string) {
         let getMerchantsUrl = `${this.apiUrl}/merchants/${merchantID}/?key=${this.APIKey}`;
         return this.http.get(getMerchantsUrl).map((res: Response) => res.json());
