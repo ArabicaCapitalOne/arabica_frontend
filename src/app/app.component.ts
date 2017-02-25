@@ -7,7 +7,7 @@ import {
   ViewEncapsulation
 } from '@angular/core';
 
-import { Auth } from './_service/index'
+import { AngularFire, AuthProviders, AuthMethods } from 'angularfire2';
 
 /*
  * App Component
@@ -23,19 +23,26 @@ import { Auth } from './_service/index'
 })
 export class AppComponent implements OnInit {
 
-  constructor(
-    private auth: Auth
-  ) {}
+  constructor(public af: AngularFire) { }
 
   public ngOnInit() {
   }
 
-}
+  login() {
+    this.af.auth.login({
+      provider: AuthProviders.Facebook,
+      method: AuthMethods.Popup,
+    })
+    .then((success) => {
+      console.log("Firebase success: " + JSON.stringify(success));
+    })
+    .catch((error) => {
+      console.log("Firebase failure: " + JSON.stringify(error));
+    });
+  }
 
-/*
- * Please review the https://github.com/AngularClass/angular2-examples/ repo for
- * more angular app examples that you may copy/paste
- * (The examples may not be updated as quickly. Please open an issue on github for us to update it)
- * For help or questions please contact us at @AngularClass on twitter
- * or our chat on Slack at https://AngularClass.com/slack-join
- */
+  logout() {
+    this.af.auth.logout();
+  }
+
+}

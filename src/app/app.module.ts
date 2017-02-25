@@ -1,19 +1,22 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import {
-  NgModule,
-  ApplicationRef
-} from '@angular/core';
-import {
-  removeNgStyles,
-  createNewHosts,
-  createInputTransfer
-} from '@angularclass/hmr';
-import {
-  RouterModule,
-  PreloadAllModules
-} from '@angular/router';
+import { NgModule, ApplicationRef } from '@angular/core';
+import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
+import { RouterModule, PreloadAllModules } from '@angular/router';
+import { AngularFireModule } from 'angularfire2';
+
+/**
+ * Config Firebase
+ */
+const firebaseConfig = {
+  apiKey: "AIzaSyDHrRhLaadP9ACGu1zS-yHFoZOyXfhIrvc",
+  authDomain: "arabica-156306.firebaseapp.com",
+  databaseURL: "https://arabica-156306.firebaseio.com",
+  storageBucket: "arabica-156306.appspot.com",
+  messagingSenderId: "478294907734"
+};
+
 
 /*
  * Platform and Environment providers/directives/pipes
@@ -69,6 +72,7 @@ type StoreType = {
     FormsModule,
     HttpModule,
     RouterModule.forRoot(ROUTES, { useHash: true, preloadingStrategy: PreloadAllModules }),
+    AngularFireModule.initializeApp(firebaseConfig),
     ChartsModule
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
