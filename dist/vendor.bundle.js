@@ -7670,7 +7670,7 @@ var CallbackQueue = __webpack_require__(162);
 var PooledClass = __webpack_require__(38);
 var ReactFeatureFlags = __webpack_require__(170);
 var ReactReconciler = __webpack_require__(39);
-var Transaction = __webpack_require__(74);
+var Transaction = __webpack_require__(75);
 
 var invariant = __webpack_require__(2);
 
@@ -8172,7 +8172,7 @@ var _email = __webpack_require__(34);
 
 var _username = __webpack_require__(88);
 
-var _classic = __webpack_require__(69);
+var _classic = __webpack_require__(70);
 
 var _index3 = __webpack_require__(15);
 
@@ -8918,7 +8918,7 @@ var _immutable = __webpack_require__(13);
 
 var _immutable2 = _interopRequireDefault(_immutable);
 
-var _web_api = __webpack_require__(68);
+var _web_api = __webpack_require__(69);
 
 var _web_api2 = _interopRequireDefault(_web_api);
 
@@ -10587,7 +10587,7 @@ var _immutable2 = _interopRequireDefault(_immutable);
 
 var _index = __webpack_require__(16);
 
-var _web_api = __webpack_require__(68);
+var _web_api = __webpack_require__(69);
 
 var _web_api2 = _interopRequireDefault(_web_api);
 
@@ -11110,7 +11110,7 @@ module.exports = emptyObject;
 
 
 var DOMNamespaces = __webpack_require__(99);
-var setInnerHTML = __webpack_require__(76);
+var setInnerHTML = __webpack_require__(77);
 
 var createMicrosoftUnsafeLocalFunction = __webpack_require__(107);
 var setTextContent = __webpack_require__(186);
@@ -12652,6 +12652,19 @@ module.exports = SyntheticUIEvent;
 
 /***/ }),
 /* 65 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angularfire2__ = __webpack_require__(243);
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_0__angularfire2__["a"]; });
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_0__angularfire2__["b"]; });
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_0__angularfire2__["c"]; });
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "d", function() { return __WEBPACK_IMPORTED_MODULE_0__angularfire2__["d"]; });
+
+//# sourceMappingURL=index.js.map
+
+/***/ }),
+/* 66 */
 /***/ (function(module, exports) {
 
 /* eslint-disable no-console */
@@ -12672,13 +12685,13 @@ module.exports = Warn;
 
 
 /***/ }),
-/* 66 */
+/* 67 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Authentication = __webpack_require__(134);
 var Management = __webpack_require__(267);
 var WebAuth = __webpack_require__(268);
-var version = __webpack_require__(67);
+var version = __webpack_require__(68);
 
 module.exports = {
   Authentication: Authentication,
@@ -12689,14 +12702,14 @@ module.exports = {
 
 
 /***/ }),
-/* 67 */
+/* 68 */
 /***/ (function(module, exports) {
 
 module.exports = { raw: '8.2.0' };
 
 
 /***/ }),
-/* 68 */
+/* 69 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12704,7 +12717,7 @@ module.exports = { raw: '8.2.0' };
 
 exports.__esModule = true;
 
-var _auth0Js = __webpack_require__(66);
+var _auth0Js = __webpack_require__(67);
 
 var _auth0Js2 = _interopRequireDefault(_auth0Js);
 
@@ -12809,7 +12822,7 @@ exports.default = new Auth0WebAPI();
 
 
 /***/ }),
-/* 69 */
+/* 70 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13050,7 +13063,7 @@ exports.default = new Classic();
 
 
 /***/ }),
-/* 70 */
+/* 71 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13096,7 +13109,7 @@ function logIn(id, connection, loginHint) {
 
 
 /***/ }),
-/* 71 */
+/* 72 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13169,7 +13182,7 @@ BackButton.propTypes = {
 
 
 /***/ }),
-/* 72 */
+/* 73 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /**
@@ -13188,7 +13201,7 @@ module.exports = firebase;
 
 
 /***/ }),
-/* 73 */
+/* 74 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13265,7 +13278,7 @@ SyntheticUIEvent.augmentClass(SyntheticMouseEvent, MouseEventInterface);
 module.exports = SyntheticMouseEvent;
 
 /***/ }),
-/* 74 */
+/* 75 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13495,7 +13508,7 @@ var TransactionImpl = {
 module.exports = TransactionImpl;
 
 /***/ }),
-/* 75 */
+/* 76 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13623,7 +13636,7 @@ function escapeTextContentForBrowser(text) {
 module.exports = escapeTextContentForBrowser;
 
 /***/ }),
-/* 76 */
+/* 77 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13726,7 +13739,7 @@ if (ExecutionEnvironment.canUseDOM) {
 module.exports = setInnerHTML;
 
 /***/ }),
-/* 77 */
+/* 78 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;//     Underscore.js 1.8.3
@@ -15281,10 +15294,10 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;//     Underscor
 
 
 /***/ }),
-/* 78 */,
 /* 79 */,
 /* 80 */,
-/* 81 */
+/* 81 */,
+/* 82 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -15378,24 +15391,13 @@ function stripProviderId(providerId) {
 //# sourceMappingURL=auth_backend.js.map
 
 /***/ }),
-/* 82 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angularfire2__ = __webpack_require__(243);
-/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_0__angularfire2__["a"]; });
-/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_0__angularfire2__["b"]; });
-
-//# sourceMappingURL=index.js.map
-
-/***/ }),
 /* 83 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* eslint-disable no-param-reassign */
 var request = __webpack_require__(119);
 var base64Url = __webpack_require__(135);
-var version = __webpack_require__(67);
+var version = __webpack_require__(68);
 
 // ------------------------------------------------ RequestWrapper
 
@@ -16415,7 +16417,7 @@ exports.__esModule = true;
 exports.load = load;
 exports.preload = preload;
 
-var _auth0Js = __webpack_require__(66);
+var _auth0Js = __webpack_require__(67);
 
 var _auth0Js2 = _interopRequireDefault(_auth0Js);
 
@@ -16689,7 +16691,7 @@ module.exports = shallowEqual;
 /* 97 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var _ = __webpack_require__(77);
+var _ = __webpack_require__(78);
 
 /* OWASP Special Characters: https://www.owasp.org/index.php/Password_special_characters */
 var specialCharacters = [' ', '!', '"', '#', '\\$', '%', '&', '\'', '\\(', '\\)', '\\*', '\\+', ',', '-', '\\.', '/', ':', ';', '<', '=', '>', '\\?', '@', '\\[', '\\\\', '\\]', '\\^', '_','`','{','\\|', '}','~'].join('|');
@@ -16808,7 +16810,7 @@ var ReactDOMComponentTree = __webpack_require__(9);
 var ReactInstrumentation = __webpack_require__(20);
 
 var createMicrosoftUnsafeLocalFunction = __webpack_require__(107);
-var setInnerHTML = __webpack_require__(76);
+var setInnerHTML = __webpack_require__(77);
 var setTextContent = __webpack_require__(186);
 
 function getNodeAfter(parentNode, node) {
@@ -20545,7 +20547,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
-var http_1 = __webpack_require__(78);
+var http_1 = __webpack_require__(79);
 var core_1 = __webpack_require__(7);
 var Observable_1 = __webpack_require__(54);
 __webpack_require__(620);
@@ -20974,7 +20976,7 @@ var FirebaseListObservable = (function (_super) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_operator_combineLatest___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_operator_combineLatest__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_operator_merge__ = __webpack_require__(484);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_operator_merge___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_operator_merge__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_operator_map__ = __webpack_require__(80);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_operator_map__ = __webpack_require__(81);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_operator_map__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_operator_auditTime__ = __webpack_require__(624);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_operator_auditTime___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_rxjs_operator_auditTime__);
@@ -21177,7 +21179,7 @@ function hasObservableProperties(query) {
 /* 133 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var version = __webpack_require__(67);
+var version = __webpack_require__(68);
 var windowHandler = __webpack_require__(30);
 var PluginHandler = __webpack_require__(252);
 
@@ -21219,7 +21221,7 @@ var objectHelper = __webpack_require__(23);
 var assert = __webpack_require__(33);
 var responseHandler = __webpack_require__(45);
 var parametersWhitelist = __webpack_require__(259);
-var Warn = __webpack_require__(65);
+var Warn = __webpack_require__(66);
 
 var PasswordlessAuthentication = __webpack_require__(255);
 var DBConnection = __webpack_require__(254);
@@ -22430,7 +22432,7 @@ var _index = __webpack_require__(4);
 
 var l = _interopRequireWildcard(_index);
 
-var _actions = __webpack_require__(70);
+var _actions = __webpack_require__(71);
 
 var _index2 = __webpack_require__(47);
 
@@ -22547,7 +22549,7 @@ var _core = __webpack_require__(285);
 
 var _core2 = _interopRequireDefault(_core);
 
-var _classic = __webpack_require__(69);
+var _classic = __webpack_require__(70);
 
 var _classic2 = _interopRequireDefault(_classic);
 
@@ -22652,7 +22654,7 @@ var _chrome = __webpack_require__(306);
 
 var _chrome2 = _interopRequireDefault(_chrome);
 
-var _button = __webpack_require__(71);
+var _button = __webpack_require__(72);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -26232,7 +26234,7 @@ var ReactUpdates = __webpack_require__(21);
 var emptyObject = __webpack_require__(49);
 var instantiateReactComponent = __webpack_require__(184);
 var invariant = __webpack_require__(2);
-var setInnerHTML = __webpack_require__(76);
+var setInnerHTML = __webpack_require__(77);
 var shouldUpdateReactComponent = __webpack_require__(112);
 var warning = __webpack_require__(3);
 
@@ -27412,8 +27414,8 @@ module.exports = isTextInputElement;
 
 
 var ExecutionEnvironment = __webpack_require__(11);
-var escapeTextContentForBrowser = __webpack_require__(75);
-var setInnerHTML = __webpack_require__(76);
+var escapeTextContentForBrowser = __webpack_require__(76);
+var setInnerHTML = __webpack_require__(77);
 
 /**
  * Set the textContent property of a node, ensuring that whitespace is preserved
@@ -28511,7 +28513,7 @@ function updateLink(linkElement, obj) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_firebase__ = __webpack_require__(72);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_firebase__ = __webpack_require__(73);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_firebase___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_firebase__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils__ = __webpack_require__(32);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__tokens__ = __webpack_require__(56);
@@ -28525,8 +28527,8 @@ function updateLink(linkElement, obj) {
 /* unused harmony reexport FirebaseListFactory */
 /* unused harmony reexport FirebaseObjectFactory */
 /* unused harmony reexport firebaseAuthConfig */
-/* unused harmony reexport AuthMethods */
-/* unused harmony reexport AuthProviders */
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return __WEBPACK_IMPORTED_MODULE_4__auth_index__["d"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_4__auth_index__["e"]; });
 /* unused harmony reexport WindowLocation */
 /* unused harmony reexport FirebaseConfig */
 /* unused harmony reexport FirebaseApp */
@@ -28664,12 +28666,12 @@ var AngularFireModule_1;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_ReplaySubject___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_ReplaySubject__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__tokens__ = __webpack_require__(56);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__utils__ = __webpack_require__(32);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__auth_backend__ = __webpack_require__(81);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__auth_backend__ = __webpack_require__(82);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_operator_mergeMap__ = __webpack_require__(195);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_operator_mergeMap___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_rxjs_operator_mergeMap__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_observable_of__ = __webpack_require__(203);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_observable_of___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_rxjs_observable_of__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_operator_map__ = __webpack_require__(80);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_operator_map__ = __webpack_require__(81);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_rxjs_operator_map__);
 /* unused harmony export firebaseAuthConfig */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AngularFireAuth; });
@@ -28850,15 +28852,15 @@ function attachCredentialToAuthState(authState, credential, providerId) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_firebase__ = __webpack_require__(72);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_firebase__ = __webpack_require__(73);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_firebase___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_firebase__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__ = __webpack_require__(54);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__tokens__ = __webpack_require__(56);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__utils__ = __webpack_require__(32);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__auth_backend__ = __webpack_require__(81);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_operator_map__ = __webpack_require__(80);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__auth_backend__ = __webpack_require__(82);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_operator_map__ = __webpack_require__(81);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_rxjs_operator_map__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_observable_fromPromise__ = __webpack_require__(477);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_observable_fromPromise___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_rxjs_observable_fromPromise__);
@@ -28984,8 +28986,10 @@ function castPromise(promiseLike) {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__auth__ = __webpack_require__(244);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_0__auth__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__auth_backend__ = __webpack_require__(81);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__auth_backend__ = __webpack_require__(82);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_1__auth_backend__["a"]; });
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "d", function() { return __WEBPACK_IMPORTED_MODULE_1__auth_backend__["d"]; });
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "e", function() { return __WEBPACK_IMPORTED_MODULE_1__auth_backend__["c"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__firebase_sdk_auth_backend__ = __webpack_require__(245);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_2__firebase_sdk_auth_backend__["a"]; });
 
@@ -29061,7 +29065,7 @@ function getAbsUrl(root, url) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_firebase__ = __webpack_require__(72);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_firebase__ = __webpack_require__(73);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_firebase___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_firebase__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__firebase_list_observable__ = __webpack_require__(131);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_operator_observeOn__ = __webpack_require__(122);
@@ -29070,7 +29074,7 @@ function getAbsUrl(root, url) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__utils__ = __webpack_require__(32);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_operator_mergeMap__ = __webpack_require__(195);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_operator_mergeMap___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_rxjs_operator_mergeMap__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_operator_map__ = __webpack_require__(80);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_operator_map__ = __webpack_require__(81);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_rxjs_operator_map__);
 /* harmony export (immutable) */ __webpack_exports__["a"] = FirebaseListFactory;
 /* unused harmony export onChildAdded */
@@ -29293,7 +29297,7 @@ function onChildUpdated(arr, child, toKey, prevKey) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__index__ = __webpack_require__(64);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_operator_observeOn__ = __webpack_require__(122);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_operator_observeOn___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_operator_observeOn__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_firebase__ = __webpack_require__(72);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_firebase__ = __webpack_require__(73);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_firebase___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_firebase__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__utils__ = __webpack_require__(32);
 /* harmony export (immutable) */ __webpack_exports__["a"] = FirebaseObjectFactory;
@@ -30101,7 +30105,7 @@ module.exports = {
 /* 260 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var version = __webpack_require__(67);
+var version = __webpack_require__(68);
 
 function PluginHandler(webAuth, plugins) {
   this.plugins = plugins;
@@ -30329,7 +30333,7 @@ module.exports = DummyStorage;
 var windowHandler = __webpack_require__(30);
 var DummyStorage = __webpack_require__(265);
 var CookieStorage = __webpack_require__(264);
-var Warn = __webpack_require__(65);
+var Warn = __webpack_require__(66);
 
 function StorageHandler() {
   this.warn = new Warn({});
@@ -30868,7 +30872,7 @@ var assert = __webpack_require__(33);
 var responseHandler = __webpack_require__(45);
 var PopupHandler = __webpack_require__(261);
 var objectHelper = __webpack_require__(23);
-var Warn = __webpack_require__(65);
+var Warn = __webpack_require__(66);
 var TransactionManager = __webpack_require__(137);
 
 function Popup(client, options) {
@@ -31090,7 +31094,7 @@ module.exports = Popup;
 
 var UsernamePassword = __webpack_require__(272);
 var objectHelper = __webpack_require__(23);
-var Warn = __webpack_require__(65);
+var Warn = __webpack_require__(66);
 var assert = __webpack_require__(33);
 
 function Redirect(client, options) {
@@ -32144,7 +32148,7 @@ var _quick_auth_pane = __webpack_require__(92);
 
 var _quick_auth_pane2 = _interopRequireDefault(_quick_auth_pane);
 
-var _actions = __webpack_require__(70);
+var _actions = __webpack_require__(71);
 
 var _signed_in_confirmation = __webpack_require__(36);
 
@@ -32233,7 +32237,7 @@ var _quick_auth_pane = __webpack_require__(92);
 
 var _quick_auth_pane2 = _interopRequireDefault(_quick_auth_pane);
 
-var _actions = __webpack_require__(70);
+var _actions = __webpack_require__(71);
 
 var _signed_in_confirmation = __webpack_require__(36);
 
@@ -32340,7 +32344,7 @@ var _index = __webpack_require__(16);
 
 var _box = __webpack_require__(305);
 
-var _web_api = __webpack_require__(68);
+var _web_api = __webpack_require__(69);
 
 var _web_api2 = _interopRequireDefault(_web_api);
 
@@ -32871,7 +32875,7 @@ function syncRemoteData(m) {
 exports.__esModule = true;
 exports.fetchSSOData = fetchSSOData;
 
-var _web_api = __webpack_require__(68);
+var _web_api = __webpack_require__(69);
 
 var _web_api2 = _interopRequireDefault(_web_api);
 
@@ -32911,7 +32915,7 @@ var _quick_auth_pane = __webpack_require__(92);
 
 var _quick_auth_pane2 = _interopRequireDefault(_quick_auth_pane);
 
-var _actions = __webpack_require__(70);
+var _actions = __webpack_require__(71);
 
 var _index = __webpack_require__(143);
 
@@ -33046,7 +33050,7 @@ var _idtokenVerifier = __webpack_require__(159);
 
 var _idtokenVerifier2 = _interopRequireDefault(_idtokenVerifier);
 
-var _auth0Js = __webpack_require__(66);
+var _auth0Js = __webpack_require__(67);
 
 var _auth0Js2 = _interopRequireDefault(_auth0Js);
 
@@ -33279,7 +33283,7 @@ exports.__esModule = true;
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var _auth0Js = __webpack_require__(66);
+var _auth0Js = __webpack_require__(67);
 
 var _auth0Js2 = _interopRequireDefault(_auth0Js);
 
@@ -33477,7 +33481,7 @@ var _single_sign_on_notice = __webpack_require__(140);
 
 var _single_sign_on_notice2 = _interopRequireDefault(_single_sign_on_notice);
 
-var _classic = __webpack_require__(69);
+var _classic = __webpack_require__(70);
 
 var _i18n = __webpack_require__(18);
 
@@ -33881,7 +33885,7 @@ var _pane_separator = __webpack_require__(142);
 
 var _pane_separator2 = _interopRequireDefault(_pane_separator);
 
-var _classic = __webpack_require__(69);
+var _classic = __webpack_require__(70);
 
 var _single_sign_on_notice = __webpack_require__(140);
 
@@ -34988,7 +34992,7 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _button = __webpack_require__(71);
+var _button = __webpack_require__(72);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -35098,7 +35102,7 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _button = __webpack_require__(71);
+var _button = __webpack_require__(72);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -36163,7 +36167,7 @@ var _reactDom = __webpack_require__(60);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _button = __webpack_require__(71);
+var _button = __webpack_require__(72);
 
 var _text_input = __webpack_require__(151);
 
@@ -42473,7 +42477,7 @@ module.exports = PasswordPolicyError;
 /* 368 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var _ = __webpack_require__(77);
+var _ = __webpack_require__(78);
 
 var contains = __webpack_require__(97);
 
@@ -42555,7 +42559,7 @@ module.exports = {
 /* 369 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var _ = __webpack_require__(77);
+var _ = __webpack_require__(78);
 
 function assert(options, password) {
   if (!password) {
@@ -42616,7 +42620,7 @@ module.exports = {
 /* 370 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var _ = __webpack_require__(77);
+var _ = __webpack_require__(78);
 
 /* A rule should contain explain and rule methods */
 // TODO explain explain
@@ -43818,7 +43822,7 @@ module.exports = DefaultEventPluginOrder;
 
 var EventPropagators = __webpack_require__(52);
 var ReactDOMComponentTree = __webpack_require__(9);
-var SyntheticMouseEvent = __webpack_require__(73);
+var SyntheticMouseEvent = __webpack_require__(74);
 
 var eventTypes = {
   mouseEnter: {
@@ -44555,7 +44559,7 @@ var ReactMultiChild = __webpack_require__(414);
 var ReactServerRenderingTransaction = __webpack_require__(420);
 
 var emptyFunction = __webpack_require__(19);
-var escapeTextContentForBrowser = __webpack_require__(75);
+var escapeTextContentForBrowser = __webpack_require__(76);
 var invariant = __webpack_require__(2);
 var isEventSupported = __webpack_require__(111);
 var shallowEqual = __webpack_require__(96);
@@ -46483,7 +46487,7 @@ var DOMChildrenOperations = __webpack_require__(98);
 var DOMLazyTree = __webpack_require__(50);
 var ReactDOMComponentTree = __webpack_require__(9);
 
-var escapeTextContentForBrowser = __webpack_require__(75);
+var escapeTextContentForBrowser = __webpack_require__(76);
 var invariant = __webpack_require__(2);
 var validateDOMNesting = __webpack_require__(113);
 
@@ -47071,7 +47075,7 @@ module.exports = ReactDOMUnknownPropertyHook;
 var _assign = __webpack_require__(6);
 
 var ReactUpdates = __webpack_require__(21);
-var Transaction = __webpack_require__(74);
+var Transaction = __webpack_require__(75);
 
 var emptyFunction = __webpack_require__(19);
 
@@ -48636,7 +48640,7 @@ var PooledClass = __webpack_require__(38);
 var ReactBrowserEventEmitter = __webpack_require__(62);
 var ReactInputSelection = __webpack_require__(172);
 var ReactInstrumentation = __webpack_require__(20);
-var Transaction = __webpack_require__(74);
+var Transaction = __webpack_require__(75);
 var ReactUpdateQueue = __webpack_require__(106);
 
 /**
@@ -48909,7 +48913,7 @@ module.exports = ReactRef;
 var _assign = __webpack_require__(6);
 
 var PooledClass = __webpack_require__(38);
-var Transaction = __webpack_require__(74);
+var Transaction = __webpack_require__(75);
 var ReactInstrumentation = __webpack_require__(20);
 var ReactServerUpdateQueue = __webpack_require__(421);
 
@@ -50235,7 +50239,7 @@ var SyntheticClipboardEvent = __webpack_require__(429);
 var SyntheticEvent = __webpack_require__(27);
 var SyntheticFocusEvent = __webpack_require__(432);
 var SyntheticKeyboardEvent = __webpack_require__(434);
-var SyntheticMouseEvent = __webpack_require__(73);
+var SyntheticMouseEvent = __webpack_require__(74);
 var SyntheticDragEvent = __webpack_require__(431);
 var SyntheticTouchEvent = __webpack_require__(435);
 var SyntheticTransitionEvent = __webpack_require__(436);
@@ -50585,7 +50589,7 @@ module.exports = SyntheticCompositionEvent;
 
 
 
-var SyntheticMouseEvent = __webpack_require__(73);
+var SyntheticMouseEvent = __webpack_require__(74);
 
 /**
  * @interface DragEvent
@@ -50892,7 +50896,7 @@ module.exports = SyntheticTransitionEvent;
 
 
 
-var SyntheticMouseEvent = __webpack_require__(73);
+var SyntheticMouseEvent = __webpack_require__(74);
 
 /**
  * @interface WheelEvent
@@ -51491,7 +51495,7 @@ module.exports = getNodeForCharacterOffset;
 
 
 
-var escapeTextContentForBrowser = __webpack_require__(75);
+var escapeTextContentForBrowser = __webpack_require__(76);
 
 /**
  * Escapes attribute value to prevent scripting attacks.

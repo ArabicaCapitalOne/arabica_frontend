@@ -163,7 +163,7 @@ module.exports = (__webpack_require__(8))(442);
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(78);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(79);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CapitalOne; });
 
 
@@ -290,7 +290,7 @@ Auth = __decorate([
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(78);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(79);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__(622);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Data; });
@@ -390,7 +390,7 @@ AboutComponent = __decorate([
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angularfire2__ = __webpack_require__(82);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angularfire2__ = __webpack_require__(65);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppComponent; });
 /*
  * Angular 2 decorators and services
@@ -408,7 +408,16 @@ var AppComponent = (function () {
     AppComponent.prototype.ngOnInit = function () {
     };
     AppComponent.prototype.login = function () {
-        this.af.auth.login();
+        this.af.auth.login({
+            provider: __WEBPACK_IMPORTED_MODULE_1_angularfire2__["c" /* AuthProviders */].Google,
+            method: __WEBPACK_IMPORTED_MODULE_1_angularfire2__["d" /* AuthMethods */].Popup,
+        })
+            .then(function (success) {
+            console.log("Firebase success: " + JSON.stringify(success));
+        })
+            .catch(function (error) {
+            console.log("Firebase failure: " + JSON.stringify(error));
+        });
     };
     AppComponent.prototype.logout = function () {
         this.af.auth.logout();
@@ -437,12 +446,12 @@ AppComponent = __decorate([
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__(196);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__(486);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__(78);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__(79);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_core__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angularclass_hmr__ = __webpack_require__(126);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angularclass_hmr___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__angularclass_hmr__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_router__ = __webpack_require__(123);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_angularfire2__ = __webpack_require__(82);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_angularfire2__ = __webpack_require__(65);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__environment__ = __webpack_require__(125);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__app_routes__ = __webpack_require__(235);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__app_component__ = __webpack_require__(232);
@@ -461,7 +470,6 @@ AppComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__styles_styles_scss___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_19__styles_styles_scss__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__styles_headings_css__ = __webpack_require__(463);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__styles_headings_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_20__styles_headings_css__);
-/* unused harmony export firebaseConfig */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 
 
@@ -735,13 +743,17 @@ AccountsComponent = __decorate([
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__service__ = __webpack_require__(55);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angularfire2__ = __webpack_require__(65);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__service__ = __webpack_require__(55);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CategorizationComponent; });
 
 
+
 var CategorizationComponent = (function () {
-    function CategorizationComponent(capitalOne) {
+    function CategorizationComponent(capitalOne, af) {
+        var _this = this;
         this.capitalOne = capitalOne;
+        this.af = af;
         this.purchases = [];
         this.category = "Null";
         this.pointer = 0;
@@ -763,6 +775,9 @@ var CategorizationComponent = (function () {
                 creation_date: "", geocode: { lat: 0, lng: 0 }, name: ""
             }
         };
+        this.af.database.list('/categories', { query: { orderByChild: "name" } }).subscribe(function (data) {
+            _this.categories = data;
+        });
     }
     CategorizationComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -775,7 +790,6 @@ var CategorizationComponent = (function () {
                             p.merchantInfo = data;
                             _this.purchases.push(p);
                             _this.purchase = _this.purchases[0];
-                            console.log(p);
                         });
                     };
                     for (var _i = 0, data_1 = data; _i < data_1.length; _i++) {
@@ -836,7 +850,10 @@ var CategorizationComponent = (function () {
                 break;
         }
     };
-    CategorizationComponent.prototype.nextPurchase = function () {
+    CategorizationComponent.prototype.updateCategory = function (category, purchase) {
+        var ref = this.af.database.list('/purchase_category', { query: { orderByChild: "purchaseID", equalTo: purchase._id } });
+        console.log(ref);
+        ref.update(purchase._id, { "category": category.name });
     };
     CategorizationComponent.prototype.ngOnDestroy = function () {
         this.purchases = [];
@@ -855,7 +872,7 @@ CategorizationComponent = __decorate([
         styles: [__webpack_require__(471)],
         template: __webpack_require__(374)
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__service__["d" /* CapitalOne */]])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__service__["d" /* CapitalOne */], __WEBPACK_IMPORTED_MODULE_1_angularfire2__["b" /* AngularFire */]])
 ], CategorizationComponent);
 
 
@@ -867,7 +884,7 @@ CategorizationComponent = __decorate([
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angularfire2__ = __webpack_require__(82);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angularfire2__ = __webpack_require__(65);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomeComponent; });
 
 
@@ -1250,7 +1267,7 @@ module.exports = "<section class=\"container\">\n    <section class=\"row text-c
 /***/ 372:
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-default\">\n    <div class=\"container-fluid\">\n        <!-- Brand and toggle get grouped for better mobile display -->\n        <div class=\"navbar-header\">\n            <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#navbar-collapse\"\n                aria-expanded=\"false\">\n                <span class=\"sr-only\">Toggle navigation</span>\n                <span class=\"icon-bar\"></span>\n                <span class=\"icon-bar\"></span>\n                <span class=\"icon-bar\"></span>\n            </button>\n            <a class=\"navbar-brand\" [routerLink]=\"['/home']\">Arabica</a>\n        </div>\n\n        <!-- Collect the nav links, forms, and other content for toggling -->\n        <div class=\"collapse navbar-collapse\" id=\"navbar-collapse\">\n            <ul *ngIf=\"!auth.authenticated()\" class=\"nav navbar-nav navbar-right\">\n                <li><a href=\"#about\">About</a></li>\n                <li><button class=\"btn btn-primary\" (click)=\"login()\" style=\"margin: 9px 0px 0px 0px\">Log In</button></li>\n            </ul>\n            <ul *ngIf=\"auth.authenticated()\" class=\"nav navbar-nav navbar-right\">\n                <li><a [routerLink]=\"['./home/overview']\">Overview</a></li>\n                <li><a [routerLink]=\"['./home/accounts']\">Accounts</a></li>\n                <li><a [routerLink]=\"['./home/categorization']\">Categorization</a></li>\n                <li><a [routerLink]=\"['./home/profile']\">Profile</a></li>\n                <li><button class=\"btn btn-primary\" (click)=\"logout()\" style=\"margin: 9px 0px 0px 0px\">Log Out</button></li>\n            </ul>\n        </div>\n        <!-- /.navbar-collapse -->\n    </div>\n    <!-- /.container-fluid -->\n</nav>\n<router-outlet></router-outlet>\n<footer>\n    <div class=\"container\">\n        <p class=\"text-center\">&copy;2017 Developed &amp; Designed by Guocheng Wei</p>\n    </div>\n</footer>"
+module.exports = "<nav class=\"navbar navbar-default\">\n    <div class=\"container-fluid\">\n        <!-- Brand and toggle get grouped for better mobile display -->\n        <div class=\"navbar-header\">\n            <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#navbar-collapse\"\n                aria-expanded=\"false\">\n                <span class=\"sr-only\">Toggle navigation</span>\n                <span class=\"icon-bar\"></span>\n                <span class=\"icon-bar\"></span>\n                <span class=\"icon-bar\"></span>\n            </button>\n            <a class=\"navbar-brand\" [routerLink]=\"['/home']\">Arabica</a>\n        </div>\n\n        <!-- Collect the nav links, forms, and other content for toggling -->\n        <div class=\"collapse navbar-collapse\" id=\"navbar-collapse\">\n            <ul *ngIf=\"!(af.auth | async)\" class=\"nav navbar-nav navbar-right\">\n                <li><a href=\"#about\">About</a></li>\n                <li><button class=\"btn btn-primary\" (click)=\"login()\" style=\"margin: 9px 0px 0px 0px\">Log In</button></li>\n            </ul>\n            <ul *ngIf=\"af.auth | async\" class=\"nav navbar-nav navbar-right\">\n                <li><a [routerLink]=\"['./home/overview']\">Overview</a></li>\n                <li><a [routerLink]=\"['./home/accounts']\">Accounts</a></li>\n                <li><a [routerLink]=\"['./home/categorization']\">Categorization</a></li>\n                <li><a [routerLink]=\"['./home/profile']\">Profile</a></li>\n                <li><button class=\"btn btn-primary\" (click)=\"logout()\" style=\"margin: 9px 0px 0px 0px\">Log Out</button></li>\n            </ul>\n        </div>\n        <!-- /.navbar-collapse -->\n    </div>\n    <!-- /.container-fluid -->\n</nav>\n<router-outlet></router-outlet>\n<footer>\n    <div class=\"container\">\n        <p class=\"text-center\">&copy;2017 Developed &amp; Designed by Guocheng Wei</p>\n    </div>\n</footer>"
 
 /***/ }),
 
@@ -1264,7 +1281,7 @@ module.exports = "<div class=\"row\">\n    <div class=\"col-md-6 col-md-offset-3
 /***/ 374:
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1\">\n    <div class=\"panel panel-default\">\n        <div class=\"panel-heading\">{{purchase.merchantInfo.name}}</div>\n        <div class=\"panel-body\">\n            <p>Payee Type: {{purchase.type}}</p>\n            <p>Category: {{purchase.description}}</p>\n            <p>Amount: {{purchase.amount}}</p>\n            <p>Medium: {{purchase.medium}}</p>\n            <p>Date: {{purchase.merchantInfo.creation_date}}</p>\n            <p>Address: {{purchase.merchantInfo.address.street_number}} {{purchase.merchantInfo.address.street_number}}, {{purchase.merchantInfo.address.city}}, {{purchase.merchantInfo.address.state}} {{purchase.merchantInfo.address.zip}}</p>\n        </div>\n    </div>\n    <h2 class=\"text-center\">{{category}}</h2>\n</div>"
+module.exports = "<div class=\"col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1\">\n    <div class=\"panel panel-default\">\n        <div class=\"panel-heading\">{{purchase.merchantInfo.name}}</div>\n        <div class=\"panel-body\">\n            <p>Payee Type: {{purchase.type}}</p>\n            <p>Category: {{purchase.description}}</p>\n            <p>Amount: {{purchase.amount}}</p>\n            <p>Medium: {{purchase.medium}}</p>\n            <p>Date: {{purchase.merchantInfo.creation_date}}</p>\n            <p>Address: {{purchase.merchantInfo.address.street_number}} {{purchase.merchantInfo.address.street_number}}, {{purchase.merchantInfo.address.city}}, {{purchase.merchantInfo.address.state}} {{purchase.merchantInfo.address.zip}}</p>\n        </div>\n    </div>\n    <br>\n    <h2 class=\"text-center\">{{category}}</h2>\n    <br>\n    <section>\n        <div *ngFor=\"let c of categories\" class=\"col-lg-3 col-md-4 col-xs-6 text-center btn btn-default\" (click)=\"updateCategory(c, purchase)\">{{c.name}}</div>\n        <div class=\"col-lg-3 col-md-4 col-xs-6 text-center btn btn-default\"><i class=\"glyphicon glyphicon-plus\"></i></div>\n    </section>\n</div>"
 
 /***/ }),
 
@@ -1610,7 +1627,7 @@ module.exports = (__webpack_require__(8))(2);
 
 /***/ }),
 
-/***/ 78:
+/***/ 79:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = (__webpack_require__(8))(441);
@@ -1624,7 +1641,7 @@ module.exports = vendor_lib;
 
 /***/ }),
 
-/***/ 80:
+/***/ 81:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = (__webpack_require__(8))(96);
