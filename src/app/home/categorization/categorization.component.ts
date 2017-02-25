@@ -1,8 +1,5 @@
-import {
-    Component,
-    OnInit,
-    HostListener
-} from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
+import { AngularFire, FirebaseObjectObservable, FirebaseListObservable } from 'angularfire2';
 import { CapitalOne } from '../../_service'
 
 @Component({
@@ -12,6 +9,7 @@ import { CapitalOne } from '../../_service'
 })
 export class CategorizationComponent implements OnInit {
     purchases: Array<any> = [];
+    categories: any;
     category: any = "Null";
     pointer: number = 0;
     purchase: any = {
@@ -33,7 +31,13 @@ export class CategorizationComponent implements OnInit {
         }
     };
 
-    constructor(private capitalOne: CapitalOne) { }
+    constructor(private capitalOne: CapitalOne, private af: AngularFire) {
+        this.af.database.list('/categories', { query: {orderByChild: "name"} } ).subscribe(
+            data => {
+                this.categories = data;
+            }
+        );
+    }
 
     ngOnInit() {
         this.capitalOne.getAccounts().subscribe(
@@ -47,8 +51,7 @@ export class CategorizationComponent implements OnInit {
                                         p.merchantInfo = data;
                                         this.purchases.push(p);
                                         this.purchase = this.purchases[0];
-                                        console.log(p);
-                                    }
+                                   }
                                 );
                             }
                         }
@@ -110,8 +113,10 @@ export class CategorizationComponent implements OnInit {
         }
     }
 
-    nextPurchase() {
-
+    updateCategory(category: any, purchase: any) {
+        let ref = this.af.database.list('/purchase_category', { query: {orderByChild:"purchaseID", equalTo:purchase._id } });
+        console.log(ref);
+        ref.update(purchase._id, {"category": category.name});
     }
 
     ngOnDestroy() {

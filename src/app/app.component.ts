@@ -30,7 +30,7 @@ export class AppComponent implements OnInit {
 
   login() {
     this.af.auth.login({
-      provider: AuthProviders.Facebook,
+      provider: AuthProviders.Google,
       method: AuthMethods.Popup,
     })
     .then((success) => {
